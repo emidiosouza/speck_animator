@@ -1,0 +1,8 @@
+streamlit
+requests
+Pillow
+uuid
+google-cloud-storage
+python-dotenv
+gcsfs==x.x.x
+st-files-connection
