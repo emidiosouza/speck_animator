@@ -118,19 +118,45 @@ if not check_password():
     st.stop()
 
 
-# Inicializa a aplicação Streamlit
 
+
+#Cria variáveis do LeiaPix
+presets = {
+    "Horizontal": {"phaseX": 0.0, "phaseY": 0.25, "phaseZ": 0.25, "amplitudeX": 0.63, "amplitudeY": 0.00, "amplitudeZ": 0.00},
+    "Wide Circle": {"phaseX": 0.0, "phaseY": 0.25, "phaseZ": 0.25, "amplitudeX": 0.63, "amplitudeY": 0.31, "amplitudeZ": 0.00},
+    "Circle": {"phaseX": 0.0, "phaseY": 0.25, "phaseZ": 0.25, "amplitudeX": 0.63, "amplitudeY": 0.63, "amplitudeZ": 0.00},
+    "Tall Circle": {"phaseX": 0.0, "phaseY": 0.25, "phaseZ": 0.25, "amplitudeX": 0.31, "amplitudeY": 0.63, "amplitudeZ": 0.00},
+    "Vertical": {"phaseX": 0.0, "phaseY": 0.25, "phaseZ": 0.25, "amplitudeX": 0.00, "amplitudeY": 0.63, "amplitudeZ": 0.00,},
+    "Perspective": {"phaseX": 1.0, "phaseY": 0.25, "phaseZ": 1.0, "amplitudeX": 0.63, "amplitudeY": 0.16, "amplitudeZ": 0.63}
+}
+
+
+
+# Inicializa a aplicação Streamlit
 col1, col2 = st.columns(2)
 
 with col2:   
-    convergence = st.slider('Convergence', -1.0, 1.0, 0.00, 0.01)
+    # Interface para o usuário selecionar um desses presets como mencionado anteriormente.
+    selected_preset = st.selectbox("Selecione uma pré-configuração:", list(presets.keys()))
+
+    # Atribui os valores do preset selecionado às variáveis correspondentes.
+    preset_values = presets[selected_preset]
+    aX = preset_values["amplitudeX"]
+    aY = preset_values["amplitudeY"]
+    aZ = preset_values["amplitudeZ"]
+    pX = preset_values["phaseX"]
+    pY = preset_values["phaseY"]
+    pZ = preset_values["phaseZ"]
+
+    #Cria sliders e carrega as variáveis do preset
+    convergence = st.slider('Convergence', -1.0, 1.0, 0.0, 0.01)
     animationLength = st.slider('Animation Lenght', 1, 6, 6)
-    amplitudeX = st.slider('Amplitude X',  0.0, 1.0, 0.63, 0.01)
-    amplitudeY = st.slider('Amplitude Y',  0.0, 1.0, 0.16, 0.01)
-    amplitudeZ = st.slider('Amplitude Z',  0.0, 1.0, 0.63, 0.01)
-    phaseX = st.slider('Phase X', 0.0, 0.75, 0.0, 0.25)
-    phaseY = st.slider('Phase Y',  0.0, 1.0, 0.25, 0.25)
-    phaseZ = st.slider('Phase Z',  0.0, 1.0, 0.25, 0.25)
+    amplitudeX = st.slider('Amplitude X',  0.0, 1.0, preset_values["amplitudeX"], 0.01)
+    amplitudeY = st.slider('Amplitude Y',  0.0, 1.0, preset_values["amplitudeY"], 0.01)
+    amplitudeZ = st.slider('Amplitude Z',  0.0, 1.0, preset_values["amplitudeZ"], 0.01)
+    phaseX = st.slider('Phase X', 0.0, 0.75, preset_values["phaseX"], 0.25)
+    phaseY = st.slider('Phase Y',  0.0, 0.75, preset_values["phaseY"], 0.25)
+    phaseZ = st.slider('Phase Z',  0.0, 0.75, preset_values["phaseZ"], 0.25)
 
 with col1:
     # Upload de arquivo
