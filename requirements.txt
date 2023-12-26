@@ -4,5 +4,5 @@ Pillow
 uuid
 google-cloud-storage
 python-dotenv
-gcsfs==x.x.x
+gcsfs
 st-files-connection
