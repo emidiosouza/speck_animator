@@ -149,11 +149,11 @@ with col2:
     convergence = st.slider('Convergence', -1.0, 1.0, 0.0, 0.01)
     animationLength = st.slider('Animation Lenght', 1, 6, 6)
     amplitudeX = st.slider('Amplitude X',  min_value=0.0, max_value=1.0, value=preset_values["amplitudeX"], step=0.01)
-    amplitudeY = st.slider('Amplitude Y',  min_value=0.0, max_value=1.0, value=preset_values["amplitudeY"], 0.01)
-    amplitudeZ = st.slider('Amplitude Z',  min_value=0.0, max_value=1.0, value=preset_values["amplitudeZ"], 0.01)
-    phaseX = st.slider('Phase X', min_value=0.0, max_value=0.75, value=preset_values["phaseX"], 0.25)
-    phaseY = st.slider('Phase Y',  min_value=0.0, max_value=0.75, value=preset_values["phaseY"], 0.25)
-    phaseZ = st.slider('Phase Z',  min_value=0.0, max_value=0.75, value=preset_values["phaseZ"], 0.25)
+    amplitudeY = st.slider('Amplitude Y',  min_value=0.0, max_value=1.0, value=preset_values["amplitudeY"], step=0.01)
+    amplitudeZ = st.slider('Amplitude Z',  min_value=0.0, max_value=1.0, value=preset_values["amplitudeZ"], step=0.01)
+    phaseX = st.slider('Phase X', min_value=0.0, max_value=0.75, value=preset_values["phaseX"], step=0.25)
+    phaseY = st.slider('Phase Y',  min_value=0.0, max_value=0.75, value=preset_values["phaseY"], step=0.25)
+    phaseZ = st.slider('Phase Z',  min_value=0.0, max_value=0.75, value=preset_values["phaseZ"], step=0.25)
 
 with col1:
     # Upload de arquivo
