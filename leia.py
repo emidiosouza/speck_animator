@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 import hmac
 
 #Cria variáveis do LeiaPix
+convergence=0;
 presets = {
     "Horizontal": {"phaseX": 1.0, "phaseY": 0.0, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
     "Wide Circle": {"phaseX": 1.0, "phaseY": 0.5, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
