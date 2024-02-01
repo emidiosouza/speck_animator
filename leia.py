@@ -128,6 +128,8 @@ if not check_password():
 # Inicializa a seleção de presets no Streamlit
 if 'selected_preset' not in st.session_state:
     st.session_state['selected_preset'] = list(presets.keys())[0]  # Define um valor padrão
+if st.session_state['preset_values'] != presets[selected_preset]:
+    st.session_state['preset_values'] = presets[selected_preset]
 
 # Inicializa a aplicação Streamlit
 col1, col2 = st.columns(2)
@@ -135,10 +137,6 @@ col1, col2 = st.columns(2)
 with col2:   
     # Interface para o usuário selecionar um desses presets como mencionado anteriormente.
     selected_preset = st.selectbox("Selecione uma pré-configuração:", list(presets.keys()))
-
-    # Verifica se o preset selecionado mudou
-    if st.session_state['preset_values'] != presets[selected_preset]:
-        st.session_state['preset_values'] = presets[selected_preset]
 
     # Sliders usando valores do st.session_state
     amplitudeX = st.slider('Amplitude X', min_value=0.0, max_value=1.0, value=st.session_state['preset_values']["amplitudeX"], step=0.01)
