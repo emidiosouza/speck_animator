@@ -151,7 +151,7 @@ with col2:
     amplitudeX = st.slider('Amplitude X',  min_value=0.0, max_value=1.0, value=aX, step=0.01)
     amplitudeY = st.slider('Amplitude Y',  min_value=0.0, max_value=1.0, value=aY, step=0.01)
     amplitudeZ = st.slider('Amplitude Z',  min_value=0.0, max_value=1.0, value=aZ, step=0.01)
-    phaseX = st.slider('Phase X', min_value=0.0, max_value=0.75, value=preset_values=pX, step=0.25)
+    phaseX = st.slider('Phase X', min_value=0.0, max_value=0.75, value=pX, step=0.25)
     phaseY = st.slider('Phase Y',  min_value=0.0, max_value=0.75, value=pY, step=0.25)
     phaseZ = st.slider('Phase Z',  min_value=0.0, max_value=0.75, value=pZ, step=0.25)
 
