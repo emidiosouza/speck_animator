@@ -122,12 +122,12 @@ if not check_password():
 
 #Cria variáveis do LeiaPix
 presets = {
-    "Horizontal": {"phaseX": 1, "phaseY": 0, "phaseZ": 0, "amplitudeX": 0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
-    "Wide Circle": {"phaseX": 1, "phaseY": 0.5, "phaseZ": 0, "amplitudeX": 0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
-    "Circle": {"phaseX": 1, "phaseY": 1, "phaseZ": 0, "amplitudeX": 0.25, "amplitudeY": 0.25, "amplitudeZ": 0.00},
-    "Tall Circle": {"phaseX": 0.5, "phaseY": 1, "phaseZ": 0, "amplitudeX": 0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
-    "Vertical": {"phaseX": 0.0, "phaseY": 0.1, "phaseZ": 0, "amplitudeX": 0, "amplitudeY": 0.25, "amplitudeZ": 0.25,},
-    "Perspective": {"phaseX": 1, "phaseY": 0.25, "phaseZ": 1, "amplitudeX": 0, "amplitudeY": 0.25, "amplitudeZ": 0.25}
+    "Horizontal": {"phaseX": 1.0, "phaseY": 0.0, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
+    "Wide Circle": {"phaseX": 1.0, "phaseY": 0.5, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
+    "Circle": {"phaseX": 1.0, "phaseY": 1.0, "phaseZ": 0.0, "amplitudeX": 0.25, "amplitudeY": 0.25, "amplitudeZ": 0.0},
+    "Tall Circle": {"phaseX": 0.5, "phaseY": 1.0, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
+    "Vertical": {"phaseX": 0.0, "phaseY": 1.0, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25,},
+    "Perspective": {"phaseX": 1.0, "phaseY": 0.25, "phaseZ": 1.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25}
 }
 
 
