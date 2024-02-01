@@ -10,10 +10,19 @@ import datetime
 from dotenv import load_dotenv
 import hmac
 
+#Cria variáveis do LeiaPix
+presets = {
+    "Horizontal": {"phaseX": 1.0, "phaseY": 0.0, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
+    "Wide Circle": {"phaseX": 1.0, "phaseY": 0.5, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
+    "Circle": {"phaseX": 1.0, "phaseY": 1.0, "phaseZ": 0.0, "amplitudeX": 0.25, "amplitudeY": 0.25, "amplitudeZ": 0.0},
+    "Tall Circle": {"phaseX": 0.5, "phaseY": 1.0, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
+    "Vertical": {"phaseX": 0.0, "phaseY": 1.0, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25,},
+    "Perspective": {"phaseX": 1.0, "phaseY": 0.25, "phaseZ": 1.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25}
+}
+
 # Credenciais Leia Pix
 YOUR_CLIENT_ID = st.secrets["leia_pix"]["YOUR_CLIENT_ID"]
 YOUR_CLIENT_SECRET = st.secrets["leia_pix"]["YOUR_CLIENT_SECRET"]
-
 
 #Carregar credenciais do Google Cloud
 credentials = service_account.Credentials.from_service_account_info({
@@ -28,7 +37,6 @@ credentials = service_account.Credentials.from_service_account_info({
     'client_x509_cert_url': st.secrets["google_cloud"]["client_x509_cert_url"]
 })
 bucket_name = st.secrets["google_cloud"]['GOOGLE_CLOUD_BUCKET_NAME']
-
 
 # URL para obter o token de acesso LeiaPix
 LEIA_LOGIN_OPENID_TOKEN_URL = (
@@ -117,22 +125,11 @@ def check_password():
 if not check_password():
     st.stop()
 
-
-
-
-#Cria variáveis do LeiaPix
-presets = {
-    "Horizontal": {"phaseX": 1.0, "phaseY": 0.0, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
-    "Wide Circle": {"phaseX": 1.0, "phaseY": 0.5, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
-    "Circle": {"phaseX": 1.0, "phaseY": 1.0, "phaseZ": 0.0, "amplitudeX": 0.25, "amplitudeY": 0.25, "amplitudeZ": 0.0},
-    "Tall Circle": {"phaseX": 0.5, "phaseY": 1.0, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25},
-    "Vertical": {"phaseX": 0.0, "phaseY": 1.0, "phaseZ": 0.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25,},
-    "Perspective": {"phaseX": 1.0, "phaseY": 0.25, "phaseZ": 1.0, "amplitudeX": 0.0, "amplitudeY": 0.25, "amplitudeZ": 0.25}
-}
-
-
-
 # Inicializa a aplicação Streamlit
+# Inicializa a seleção de presets no Streamlit
+if 'selected_preset' not in st.session_state:
+    st.session_state['selected_preset'] = list(presets.keys())[0]  # Define um valor padrão
+
 col1, col2 = st.columns(2)
 
 with col2:   
@@ -151,12 +148,12 @@ with col2:
     #Cria sliders e carrega as variáveis do preset
     convergence = st.slider('Convergence', -1.0, 1.0, 0.0, 0.01)
     animationLength = st.slider('Animation Lenght', 1, 6, 6)
-    amplitudeX = st.slider('Amplitude X',  0.0, 1.0, preset_values["amplitudeX"], 0.01)
-    amplitudeY = st.slider('Amplitude Y',  0.0, 1.0, preset_values["amplitudeY"], 0.01)
-    amplitudeZ = st.slider('Amplitude Z',  0.0, 1.0, preset_values["amplitudeZ"], 0.01)
-    phaseX = st.slider('Phase X', 0.0, 0.75, preset_values["phaseX"], 0.25)
-    phaseY = st.slider('Phase Y',  0.0, 0.75, preset_values["phaseY"], 0.25)
-    phaseZ = st.slider('Phase Z',  0.0, 0.75, preset_values["phaseZ"], 0.25)
+    amplitudeX = st.slider('Amplitude X',  min_value=0.0, max_value=1.0, value=preset_values["amplitudeX"], step=0.01)
+    amplitudeY = st.slider('Amplitude Y',  min_value=0.0, max_value=1.0, value=preset_values["amplitudeY"], 0.01)
+    amplitudeZ = st.slider('Amplitude Z',  min_value=0.0, max_value=1.0, value=preset_values["amplitudeZ"], 0.01)
+    phaseX = st.slider('Phase X', min_value=0.0, max_value=0.75, value=preset_values["phaseX"], 0.25)
+    phaseY = st.slider('Phase Y',  min_value=0.0, max_value=0.75, value=preset_values["phaseY"], 0.25)
+    phaseZ = st.slider('Phase Z',  min_value=0.0, max_value=0.75, value=preset_values["phaseZ"], 0.25)
 
 with col1:
     # Upload de arquivo
