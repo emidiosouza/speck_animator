@@ -125,14 +125,14 @@ def check_password():
 if not check_password():
     st.stop()
 
+# Inicializa a seleção de presets no Streamlit
+if 'selected_preset' not in st.session_state:
+    st.session_state['selected_preset'] = list(presets.keys())[0]  # Define um valor padrão
+
 # Inicializa a aplicação Streamlit
 col1, col2 = st.columns(2)
 
 with col2:   
-   # Inicializa a seleção de presets no Streamlit
-    if 'selected_preset' not in st.session_state:
-        st.session_state['selected_preset'] = list(presets.keys())[0]  # Define um valor padrão
-
     # Interface para o usuário selecionar um desses presets como mencionado anteriormente.
     selected_preset = st.selectbox("Selecione uma pré-configuração:", list(presets.keys()))
 
