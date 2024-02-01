@@ -143,6 +143,8 @@ with col2:
         st.session_state['preset_values'] = presets[selected_preset]
     
     # Sliders usando valores do st.session_state
+    convergence = st.slider('Convergence, min_value=-1.0, max_value=1.0, 0.0, step=0.01)
+    animationLength = st.slider('Animation Duration', min_value=0, max_value=6, value=6, step=1)
     amplitudeX = st.slider('Amplitude X', min_value=0.0, max_value=1.0, value=st.session_state['preset_values']["amplitudeX"], step=0.01)
     amplitudeY = st.slider('Amplitude Y', min_value=0.0, max_value=1.0, value=st.session_state['preset_values']["amplitudeY"], step=0.01)
     amplitudeZ = st.slider('Amplitude Z', min_value=0.0, max_value=1.0, value=st.session_state['preset_values']["amplitudeZ"], step=0.01)
