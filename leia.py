@@ -126,34 +126,27 @@ if not check_password():
     st.stop()
 
 # Inicializa a aplicação Streamlit
-# Inicializa a seleção de presets no Streamlit
-if 'selected_preset' not in st.session_state:
-    st.session_state['selected_preset'] = list(presets.keys())[0]  # Define um valor padrão
-
 col1, col2 = st.columns(2)
 
 with col2:   
+   # Inicializa a seleção de presets no Streamlit
+    if 'selected_preset' not in st.session_state:
+        st.session_state['selected_preset'] = list(presets.keys())[0]  # Define um valor padrão
+
     # Interface para o usuário selecionar um desses presets como mencionado anteriormente.
     selected_preset = st.selectbox("Selecione uma pré-configuração:", list(presets.keys()))
 
-    # Atribui os valores do preset selecionado às variáveis correspondentes.
-    preset_values = presets[selected_preset]
-    aX = preset_values["amplitudeX"]
-    aY = preset_values["amplitudeY"]
-    aZ = preset_values["amplitudeZ"]
-    pX = preset_values["phaseX"]
-    pY = preset_values["phaseY"]
-    pZ = preset_values["phaseZ"]
+    # Verifica se o preset selecionado mudou
+    if st.session_state['preset_values'] != presets[selected_preset]:
+        st.session_state['preset_values'] = presets[selected_preset]
 
-    #Cria sliders e carrega as variáveis do preset
-    convergence = st.slider('Convergence', -1.0, 1.0, 0.0, 0.01)
-    animationLength = st.slider('Animation Lenght', 1, 6, 6)
-    amplitudeX = st.slider('Amplitude X',  min_value=0.0, max_value=1.0, value=aX, step=0.01)
-    amplitudeY = st.slider('Amplitude Y',  min_value=0.0, max_value=1.0, value=aY, step=0.01)
-    amplitudeZ = st.slider('Amplitude Z',  min_value=0.0, max_value=1.0, value=aZ, step=0.01)
-    phaseX = st.slider('Phase X', min_value=0.0, max_value=0.75, value=pX, step=0.25)
-    phaseY = st.slider('Phase Y',  min_value=0.0, max_value=0.75, value=pY, step=0.25)
-    phaseZ = st.slider('Phase Z',  min_value=0.0, max_value=0.75, value=pZ, step=0.25)
+    # Sliders usando valores do st.session_state
+    amplitudeX = st.slider('Amplitude X', min_value=0.0, max_value=1.0, value=st.session_state['preset_values']["amplitudeX"], step=0.01)
+    amplitudeY = st.slider('Amplitude Y', min_value=0.0, max_value=1.0, value=st.session_state['preset_values']["amplitudeY"], step=0.01)
+    amplitudeZ = st.slider('Amplitude Z', min_value=0.0, max_value=1.0, value=st.session_state['preset_values']["amplitudeZ"], step=0.01)
+    phaseX = st.slider('Phase X', min_value=0.0, max_value=0.75, value=st.session_state['preset_values']["phaseX"], step=0.25)
+    phaseY = st.slider('Phase Y', min_value=0.0, max_value=0.75, value=st.session_state['preset_values']["phaseY"], step=0.25)
+    phaseZ = st.slider('Phase Z', min_value=0.0, max_value=0.75, value=st.session_state['preset_values']["phaseZ"], step=0.25)
 
 with col1:
     # Upload de arquivo
