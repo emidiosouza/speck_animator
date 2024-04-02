@@ -249,7 +249,7 @@ with col1:
                             if disparity_response.status_code == 402:
                                 st.error("Putz! 🙈 Nossos créditos acabaram!")
                             else:
-                                st.error(disparity_response.status_code)
+                                st.error(f"{disparity_response.status_code}")
                 else:
                     st.error("Erro ao obter o token de acesso")
 
