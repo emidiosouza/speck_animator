@@ -40,7 +40,7 @@ bucket_name = st.secrets["google_cloud"]['GOOGLE_CLOUD_BUCKET_NAME']
 
 # URL para obter o token de acesso LeiaPix
 LEIA_LOGIN_OPENID_TOKEN_URL = (
-    "https://auth.leialoft.com/auth/realms/leialoft/protocol/openid-connect/token"
+    "https://auth.immersity.ai/auth/realms/immersityai/protocol/openid-connect/token"
 )
 
 # Função para obter o token de acesso LeiaPix
