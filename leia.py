@@ -53,7 +53,6 @@ def get_access_token():
         "grant_type": "client_credentials",
       },
     ).json()
-    st.write(token_response)
     return token_response.get("access_token")
 
 # Função para criar uma URL pré-assinada do Google Cloud Storage
@@ -174,9 +173,7 @@ with col1:
                 )
                 # Obter o token de acesso LeiaPix
                 access_token = get_access_token()
-                st.write(access_token)
                 
-
                 if access_token:
                         # Gera URLs pré-assinadas para disparidade e animação
                         correlation_id_disparity = str(uuid.uuid4())
