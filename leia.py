@@ -39,7 +39,7 @@ credentials = service_account.Credentials.from_service_account_info({
 bucket_name = st.secrets["google_cloud"]['GOOGLE_CLOUD_BUCKET_NAME']
 
 # URL para obter o token de acesso LeiaPix
-LEIA_LOGIN_OPENID_TOKEN_URL = (
+IMMERSITYAI_LOGIN_OPENID_TOKEN_URL = (
     "https://auth.immersity.ai/auth/realms/immersityai/protocol/openid-connect/token"
 )
 
