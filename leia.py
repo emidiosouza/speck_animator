@@ -53,6 +53,7 @@ def get_access_token():
         "grant_type": "client_credentials",
       },
     ).json()
+    st.write(token_response)
     return token_response.get("access_token")
 
 # Função para criar uma URL pré-assinada do Google Cloud Storage
@@ -173,6 +174,7 @@ with col1:
                 )
                 # Obter o token de acesso LeiaPix
                 access_token = get_access_token()
+                st.write(access_token)
                 
 
                 if access_token:
@@ -185,7 +187,7 @@ with col1:
                     
                         # Faz a chamada para a API da LeiaPix para disparidade
                         disparity_response = requests.post(
-                            "https://api.leiapix.com/api/v1/disparity",
+                            "https://api.immersity.ai/api/v1/disparity",
                             headers={"Authorization": f"Bearer {access_token}"},
                             json={
                                 "correlationId": correlation_id_disparity,
@@ -214,7 +216,7 @@ with col1:
 
                             # Faz a chamada para a API da LeiaPix para animação
                             animation_response = requests.post(
-                                "https://api.leiapix.com/api/v1/animation",
+                                "https://api.immersity.ai/api/v1/animation",
                                 headers={"Authorization": f"Bearer {access_token}"},
                                 json={
                                     "correlationId": correlation_id_animation,
@@ -251,6 +253,4 @@ with col1:
                                 st.error(f"{disparity_response.status_code}")
                 else:
                     st.error("Erro ao obter o token de acesso")
-
-
 
