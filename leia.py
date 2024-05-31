@@ -174,6 +174,7 @@ with col1:
                 # Obter o token de acesso LeiaPix
                 access_token = get_access_token()
                 
+
                 if access_token:
                         # Gera URLs pré-assinadas para disparidade e animação
                         correlation_id_disparity = str(uuid.uuid4())
