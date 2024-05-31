@@ -40,7 +40,7 @@ bucket_name = st.secrets["google_cloud"]['GOOGLE_CLOUD_BUCKET_NAME']
 
 # URL para obter o token de acesso LeiaPix
 IMMERSITYAI_LOGIN_OPENID_TOKEN_URL = (
-    "https://auth.immersity.ai/auth/realms/immersityai/protocol/openid-connect/token"
+  "https://auth.immersity.ai/auth/realms/immersity/protocol/openid-connect/token"
 )
 
 # Função para obter o token de acesso LeiaPix
@@ -53,6 +53,7 @@ def get_access_token():
         "grant_type": "client_credentials",
       },
     ).json()
+    st.write(token_response)
     return token_response.get("access_token")
 
 # Função para criar uma URL pré-assinada do Google Cloud Storage
@@ -252,4 +253,6 @@ with col1:
                                 st.error(f"{disparity_response.status_code}")
                 else:
                     st.error("Erro ao obter o token de acesso")
+
+
 
