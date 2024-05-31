@@ -46,12 +46,12 @@ LEIA_LOGIN_OPENID_TOKEN_URL = (
 # Função para obter o token de acesso LeiaPix
 def get_access_token():
     token_response = requests.post(
-        LEIA_LOGIN_OPENID_TOKEN_URL,
-        data={
-            "client_id": YOUR_CLIENT_ID,
-            "client_secret": YOUR_CLIENT_SECRET,
-            "grant_type": "client_credentials",
-        },
+      IMMERSITYAI_LOGIN_OPENID_TOKEN_URL,
+      data={
+        "client_id": YOUR_CLIENT_ID,
+        "client_secret": YOUR_CLIENT_SECRET,
+        "grant_type": "client_credentials",
+      },
     ).json()
     return token_response.get("access_token")
 
