@@ -173,7 +173,7 @@ with col1:
                 )
                 # Obter o token de acesso LeiaPix
                 access_token = get_access_token()
-                st.write(acess_token)
+                st.write(access_token)
                 
 
                 if access_token:
