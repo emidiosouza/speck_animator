@@ -5,11 +5,6 @@ from PIL import Image
 import uuid
 from utils import *
 
-
-
-
-
-
 st.title('Animador de Imagens SpeckEAD 🐸')
 st.caption('Desenvolvido por Emídio Souza para :orange[Kukac]')
 
