@@ -44,7 +44,6 @@ def immersity_parameters():
         for key, value in st.session_state['current_state'].items():
             st.session_state[key] = value
 
-    st.title(st.session_state['selected_preset'])
     # Interface para o usuário selecionar um preset
     st.selectbox(
         "Selecione uma pré-configuração:", 
